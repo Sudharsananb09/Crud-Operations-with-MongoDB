@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   });
   
   // Get a specific book
-  router.get('/:id', async function (req, res) {
+  router.get('/:id', async function (req, res) {*
     const { id } = req.params;
     var bookExist = await bookDirectory.filter((ele) => ele.isbn === id);
     if (bookExist.length == 0) return res.send('Book doesn\'t exist');
@@ -37,6 +37,7 @@ router.get('/', (req, res) => {
     res.send({ message: `The book with ID ${id} has been updated` });
   });
   
+  // Delete a document based on the id passed on the paramter
   router.delete('/:id', (req, res) => {
     const { id } = req.params;
     books.forEach((book, index) => {
